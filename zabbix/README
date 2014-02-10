@@ -1,0 +1,20 @@
+README file
+----------
+Memory Usage Monitoring
+
+Put script to /etc/zabbix/mem.sh
+Configure the file /etc/zabbix/zabbix_agentd.conf.
+Add in the end of file string:
+
+UserParameter=custom.memory.check[*],/etc/zabbix/mem.sh $1
+
+Restart deamon zabbix_agent
+
+In the Zabbix admin interface create item with parameters
+custom.memory.check[memfree]
+custom.memory.check[buffers]
+custom.memory.check[cached]
+custom.memory.check[active]
+
+Type of information: Numeric (float)
+Units: %
